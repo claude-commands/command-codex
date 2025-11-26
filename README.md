@@ -5,8 +5,11 @@ A Claude Code slash command for delegating tasks to OpenAI Codex CLI.
 ## Installation
 
 ```bash
-git clone git@github.com:claude-commands/command-codex.git ~/projects/claude-commands/command-codex
-ln -s ~/projects/claude-commands/command-codex/codex.md ~/.claude/commands/codex.md
+# Clone to your preferred location
+git clone git@github.com:claude-commands/command-codex.git <clone-path>/command-codex
+
+# Symlink (use full path to cloned repo)
+ln -s <clone-path>/command-codex/codex.md ~/.claude/commands/codex.md
 ```
 
 ## Usage
@@ -48,5 +51,5 @@ ln -s ~/projects/claude-commands/command-codex/codex.md ~/.claude/commands/codex
 ## Updates
 
 ```bash
-cd ~/projects/claude-commands/command-codex && git pull
+cd <clone-path>/command-codex && git pull
 ```
