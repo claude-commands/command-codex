@@ -14,7 +14,7 @@ ln -s <clone-path>/command-codex/codex.md ~/.claude/commands/codex.md
 
 ## Usage
 
-```
+```text
 /codex analyze this codebase for security vulnerabilities
 ```
 
