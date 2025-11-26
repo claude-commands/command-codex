@@ -20,20 +20,7 @@ Ask the user which model to use:
 
 Default: `gpt-5.1-codex-max`
 
-## 2. Select Reasoning Effort
-
-Ask the user for reasoning effort level:
-
-| Level | Use Case |
-|-------|----------|
-| low | Quick responses, minimal thinking |
-| medium | Daily driver (recommended) |
-| high | Complex problems |
-| xhigh | Maximum thinking, non-latency-sensitive |
-
-Default: `medium`
-
-## 3. Select Sandbox Mode
+## 2. Select Sandbox Mode
 
 Ask the user for sandbox mode:
 
@@ -45,15 +32,15 @@ Ask the user for sandbox mode:
 
 Default: `read-only`
 
-## 4. Run Codex
+## 3. Run Codex
 
 Assemble and execute the command:
 
 ```bash
-codex exec --model <model> --reasoning <level> --sandbox <mode> --skip-git-repo-check "<prompt>" 2>/dev/null
+codex exec --model <model> --sandbox <mode> --skip-git-repo-check "<prompt>" 2>/dev/null
 ```
 
-## 5. Report Results
+## 4. Report Results
 
 After execution completes:
 - Show the output to the user
