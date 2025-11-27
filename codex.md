@@ -23,6 +23,7 @@ This command delegates tasks to OpenAI Codex CLI for autonomous execution.
 | `/codex fix the bug in checkout flow` | Debug and fix issues |
 | `/codex explain how the API routes work` | Code explanation |
 | `/codex add dark mode support` | Implement new features |
+| `/codex review the auth changes` | Review with session context |
 
 **Available Models:**
 
@@ -52,7 +53,47 @@ Ask the user which model to use:
 
 Default: `gpt-5.1-codex-max`
 
-## 2. Select Sandbox Mode
+## 2. Include Session Context (Optional)
+
+Ask the user: "Do you want to include context from our current Claude session?"
+
+| Option | Description |
+|--------|-------------|
+| No | Run Codex without session context |
+| Summary | Include goal, decisions, and current task (~100 words) |
+| Detailed | Include summary plus files changed/discussed (~200 words) |
+
+Default: `No`
+
+**If user selects "Summary":**
+
+Generate a concise context block based on the current session:
+
+````text
+## Session Context
+
+**Goal:** [What the user is trying to accomplish]
+**Decisions:** [Key decisions made during this session]
+**Current Task:** [What was being worked on when /codex was invoked]
+````
+
+**If user selects "Detailed":**
+
+Generate an expanded context block based on the current session:
+
+````text
+## Session Context
+
+**Goal:** [What the user is trying to accomplish]
+**Decisions:** [Key decisions made during this session]
+**Files Changed/Discussed:**
+- [file1.ts] - [brief description of changes]
+- [file2.ts] - [brief description of changes]
+**Current Task:** [What was being worked on when /codex was invoked]
+**Open Items:** [Any unresolved questions or tasks]
+````
+
+## 3. Select Sandbox Mode
 
 Ask the user for sandbox mode:
 
@@ -64,7 +105,9 @@ Ask the user for sandbox mode:
 
 Default: `read-only`
 
-## 3. Run Codex
+## 4. Run Codex
+
+**If context was NOT requested:**
 
 Assemble and execute the command:
 
@@ -72,7 +115,28 @@ Assemble and execute the command:
 codex exec --model <model> --sandbox <mode> --skip-git-repo-check "<prompt>" 2>/dev/null
 ```
 
-## 4. Report Results
+**If context WAS requested:**
+
+Construct a combined prompt and execute using heredoc:
+
+```bash
+codex exec --model <model> --sandbox <mode> --skip-git-repo-check - 2>/dev/null <<'EOF'
+[CONTEXT BLOCK FROM STEP 2]
+
+---
+
+## Task
+
+<prompt>
+
+---
+
+Use the session context above to inform your review/analysis. The context describes what was
+being worked on in a previous AI coding session.
+EOF
+```
+
+## 5. Report Results
 
 After execution completes:
 
