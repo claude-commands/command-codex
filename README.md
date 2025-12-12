@@ -18,10 +18,11 @@ ln -s <clone-path>/command-codex/codex.md ~/.claude/commands/codex.md
 /codex analyze this codebase for security vulnerabilities
 ```
 
-## Models (Nov 2025)
+## Models (Dec 2025)
 
 | Model | Best For |
 |-------|----------|
+| `gpt-5.2` | Newest frontier model, best overall |
 | `gpt-5.1-codex-max` | Complex, long-running tasks (can run 24+ hours) |
 | `gpt-5.1-codex` | Fast, balanced performance |
 | `gpt-5-codex-mini` | Simple tasks, cost-efficient |

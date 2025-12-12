@@ -29,6 +29,7 @@ This command delegates tasks to OpenAI Codex CLI for autonomous execution.
 
 | Model | Best For |
 |-------|----------|
+| `gpt-5.2` | Newest frontier model, best overall |
 | `gpt-5.1-codex-max` | Complex, long-running tasks (can run 24+ hours) |
 | `gpt-5.1-codex` | Fast, balanced performance |
 | `gpt-5-codex-mini` | Simple tasks, cost-efficient |
@@ -47,11 +48,12 @@ Ask the user which model to use:
 
 | Model | Best For |
 |-------|----------|
+| gpt-5.2 | Newest frontier model, best overall |
 | gpt-5.1-codex-max | Complex, long-running tasks (can run 24+ hours) |
 | gpt-5.1-codex | Fast, balanced performance |
 | gpt-5-codex-mini | Simple tasks, cost-efficient |
 
-Default: `gpt-5.1-codex-max`
+Default: `gpt-5.2`
 
 ## 2. Include Session Context (Optional)
 
